@@ -12,5 +12,7 @@ namespace Sales.Domain.Models
         public DataContext():base("DefaultConnection")
         {
         }
+
+        public System.Data.Entity.DbSet<Sales.Common.Models.Product> Products { get; set; }
     }
 }
