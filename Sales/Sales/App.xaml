@@ -10,6 +10,8 @@
             
             <!--Parameters-->
             <x:String x:Key="UrlAPI">http://192.168.4.149:82</x:String>
+            <x:String x:Key="UrlPrefix">/api</x:String>
+            <x:String x:Key="ProductsController">/Products</x:String>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

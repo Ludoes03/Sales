@@ -2,8 +2,8 @@
 {
     using Common.Models;
     using GalaSoft.MvvmLight.Command;
-    using Sales.Services;
-    using System;
+    using Helpers;
+    using Services;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Windows.Input;
@@ -51,17 +51,19 @@
             if(!connection.IsSuccess)
             {
                 this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("Error", connection.Message, "Accept");
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
                 return;
             }
 
             var url = Application.Current.Resources["UrlAPI"].ToString();
-            var response = await this.apiService.GetList<Product>(url, "/api", "/Products");
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var controller = Application.Current.Resources["ProductsController"].ToString();
+            var response = await this.apiService.GetList<Product>(url, prefix, controller);
             
             if(!response.IsSuccess)
             {
                 this.IsRefreshing = false;
-                await Application.Current.MainPage.DisplayAlert("Error", response.Message, "Accept");
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
                 return;
             }
 

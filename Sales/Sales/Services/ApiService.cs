@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Sales.Services
 {
- 
+    using Helpers;
     public class ApiService
     {
         public async Task<Response> CheckConnection()
@@ -19,7 +19,7 @@ namespace Sales.Services
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "Verifique su conexión a internet.",
+                    Message = Languages.TurnOnInternet,
                 };
             }
 
@@ -30,7 +30,7 @@ namespace Sales.Services
                 return new Response
                 {
                     IsSuccess = false,
-                    Message = "No hay conexión a internet.",
+                    Message = Languages.NoInternet,
                 };
             }
 
