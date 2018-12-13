@@ -7,6 +7,9 @@
         <ResourceDictionary>
             <!--Locator-->
             <infra:InstanceLocator x:Key="Locator"/>
+            
+            <!--Parameters-->
+            <x:String x:Key="UrlAPI">http://192.168.4.149:82</x:String>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
