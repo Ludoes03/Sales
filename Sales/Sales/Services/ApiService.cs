@@ -1,15 +1,14 @@
-﻿using Newtonsoft.Json;
-using Plugin.Connectivity;
-using Sales.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Sales.Services
+﻿namespace Sales.Services
 {
     using Helpers;
+    using Newtonsoft.Json;
+    using Plugin.Connectivity;
+    using Common.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+
     public class ApiService
     {
         public async Task<Response> CheckConnection()
