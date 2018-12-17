@@ -6,6 +6,7 @@
     using Services;
     using System.Windows.Input;
     using Xamarin.Forms;
+    using System.Linq;
 
     public class AddProductViewModel: BaseViewModel
     {
@@ -122,6 +123,11 @@
                 return;
                 
             }
+            var newProduct = (Product)response.Result;
+            var viewModel = ProductsViewModel.GetInstance();
+            viewModel.Products.Add(newProduct);
+            
+
             this.isRunning = false;
             this.isEnabled = true;
             await Application.Current.MainPage.Navigation.PopAsync();

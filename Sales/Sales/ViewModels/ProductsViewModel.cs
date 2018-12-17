@@ -11,6 +11,8 @@
 
     public class ProductsViewModel: BaseViewModel
     {
+        private ObservableCollection<Product> products;
+
         #region Services
         private ApiService apiService;
         #endregion
@@ -18,11 +20,6 @@
         #region Attributes
         private bool isRefreshing;
         #endregion
-
-        #region Commands
-
-        #endregion
-        private ObservableCollection<Product> products;
 
         #region Properties
         public ObservableCollection<Product> Products
@@ -40,15 +37,39 @@
 
         public ProductsViewModel()
         {
+            instance = this;
             apiService = new ApiService();
             this.LoadProducts();
+        }
+
+        #region Singleton
+        private static ProductsViewModel instance;
+
+        public static ProductsViewModel GetInstance()
+        {
+            if(instance == null)
+            {
+                return new ProductsViewModel();
+            }
+
+            return instance;
+        }
+        #endregion
+
+        #region Commands
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new RelayCommand(LoadProducts);
+            }
         }
 
         private async void LoadProducts()
         {
             this.IsRefreshing = true;
             var connection = await this.apiService.CheckConnection();
-            if(!connection.IsSuccess)
+            if (!connection.IsSuccess)
             {
                 this.IsRefreshing = false;
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
@@ -59,8 +80,8 @@
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["ProductsController"].ToString();
             var response = await this.apiService.GetList<Product>(url, prefix, controller);
-            
-            if(!response.IsSuccess)
+
+            if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;
                 await Application.Current.MainPage.DisplayAlert(Languages.Error, response.Message, Languages.Accept);
@@ -70,14 +91,7 @@
             var list = (List<Product>)response.Result;
             this.Products = new ObservableCollection<Product>(list);
             this.IsRefreshing = false;
-        }
-
-        public ICommand RefreshCommand
-        {
-            get
-            {
-                return new RelayCommand(LoadProducts);
-            }
-        }
+        } 
+        #endregion
     }
 }
