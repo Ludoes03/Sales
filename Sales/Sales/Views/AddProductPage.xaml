@@ -6,12 +6,74 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="{i18n:Translate AddProducts}">
     <ContentPage.Content>
-        <StackLayout
-            BindingContext="{Binding AddProducts}"
-            Padding="5">
-            <Label Text="AddProducts!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView
+            BindingContext="{Binding AddProducts}">
+            <StackLayout
+                Padding="5">
+                <Image
+                    Source="noimage">
+                </Image>
+                <Label
+                    FontSize="Small"
+                    HorizontalOptions="Center"
+                    Text="{i18n:Translate ChangeImage}">
+                </Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="{i18n:Translate Description}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Placeholder="{i18n:Translate DescriptionPlaceholder}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text="{i18n:Translate Price}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Keyboard="Numeric"
+                        Placeholder="{i18n:Translate PricePlaceholder}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Text="{i18n:Translate Remarks}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Editor
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        VerticalOptions="FillAndExpand">
+                    </Editor>
+                </Grid>
+                <ActivityIndicator
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <Button
+                    BackgroundColor="Navy"
+                    BorderRadius="23"
+                    HeightRequest="46"
+                    Text="{i18n:Translate Save}"
+                    TextColor="White">
+                </Button>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

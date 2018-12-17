@@ -6,9 +6,12 @@ using Xamarin.Forms;
 namespace Sales.ViewModels
 {
     using Views;
+    using ViewModels;
     public class MainViewModel
     {
         public ProductsViewModel Products { get; set; }
+
+        public AddProductViewModel AddProduct { get; set; }
 
         public MainViewModel()
         {
@@ -25,6 +28,7 @@ namespace Sales.ViewModels
 
         private async void GoToAddProduct()
         {
+            this.AddProduct = new AddProductViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new AddProductPage());
         }
     }
