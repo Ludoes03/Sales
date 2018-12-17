@@ -2,6 +2,7 @@
 {
     using Common.Models;
     using Domain.Models;
+    using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Linq;
@@ -15,9 +16,9 @@
         private DataContext db = new DataContext();
 
         // GET: api/Products
-        public IQueryable<Product> GetProducts()
+        public  IQueryable<Product> GetProducts()
         {
-            return db.Products;
+            return db.Products.OrderBy(p => p.Description);
         }
 
         // GET: api/Products/5
@@ -72,6 +73,9 @@
         [ResponseType(typeof(Product))]
         public async Task<IHttpActionResult> PostProduct(Product product)
         {
+            product.IsAvailable = true;
+            product.PublishOn = DateTime.Now.ToUniversalTime();
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

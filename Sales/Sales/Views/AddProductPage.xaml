@@ -7,7 +7,7 @@
              Title="{i18n:Translate AddProducts}">
     <ContentPage.Content>
         <ScrollView
-            BindingContext="{Binding AddProducts}">
+            BindingContext="{Binding AddProduct}">
             <StackLayout
                 Padding="5">
                 <Image
@@ -37,6 +37,7 @@
                     <Entry
                         Grid.Column="1"
                         Grid.Row="0"
+                        Text="{Binding Description}"
                         Placeholder="{i18n:Translate DescriptionPlaceholder}">
                     </Entry>
                     <Label
@@ -49,6 +50,7 @@
                         Grid.Column="1"
                         Grid.Row="1"
                         Keyboard="Numeric"
+                        Text="{Binding Price}"
                         Placeholder="{i18n:Translate PricePlaceholder}">
                     </Entry>
                     <Label
@@ -60,16 +62,20 @@
                     <Editor
                         Grid.Column="1"
                         Grid.Row="2"
+                        Text="{Binding Remarks}"
                         VerticalOptions="FillAndExpand">
                     </Editor>
                 </Grid>
                 <ActivityIndicator
+                    IsRunning="{Binding IsRunning}"
                     VerticalOptions="CenterAndExpand">
                 </ActivityIndicator>
                 <Button
                     BackgroundColor="Navy"
                     BorderRadius="23"
+                    Command="{Binding SaveCommand}"
                     HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled}"
                     Text="{i18n:Translate Save}"
                     TextColor="White">
                 </Button>

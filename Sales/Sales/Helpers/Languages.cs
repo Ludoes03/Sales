@@ -77,6 +77,16 @@
         {
             get { return Resource.ChangeImage; }
         }
+
+        public static string DescriptioError
+        {
+            get { return Resource.DescriptioError; }
+        }
+
+        public static string PriceError
+        {
+            get { return Resource.PriceError; }
+        }
     }
 
 }

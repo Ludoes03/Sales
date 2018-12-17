@@ -156,4 +156,10 @@
   <data name="ChangeImage" xml:space="preserve">
     <value>Toque na imagem para alterá-la.</value>
   </data>
+  <data name="DescriptioError" xml:space="preserve">
+    <value>É necessário inserir uma descrição</value>
+  </data>
+  <data name="PriceError" xml:space="preserve">
+    <value>Você deve digitar um valor maior que zero.</value>
+  </data>
 </root>
