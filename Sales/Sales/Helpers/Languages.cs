@@ -37,6 +37,11 @@
         {
             get { return Resource.Products; }
         }
+
+        public static string AddProducts
+        {
+            get { return Resource.AddProducts; }
+        }
     }
 
 }

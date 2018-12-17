@@ -70,6 +70,15 @@ namespace Sales.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Add Products.
+        /// </summary>
+        public static string AddProducts {
+            get {
+                return ResourceManager.GetString("AddProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error.
         /// </summary>
         public static string Error {

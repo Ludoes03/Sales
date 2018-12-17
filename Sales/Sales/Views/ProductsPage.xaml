@@ -5,6 +5,10 @@
              x:Class="Sales.Views.ProductsPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="{i18n:Translate Products}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_action_add_box"
+                     Command="{Binding AddProductCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Products}"
@@ -30,12 +34,18 @@
                                     WidthRequest="100">
                                     
                                 </Image>
-                                <Label
-                                    FontAttributes="Bold"
+                                <StackLayout
                                     Grid.Column="1"
+                                    VerticalOptions="Center">
+                                    <Label
+                                    FontAttributes="Bold"
                                     Text="{Binding Description}"
                                     VerticalOptions="Center">
-                                </Label>
+                                    </Label>
+                                    <Label
+                                        Text="{Binding Remarks}">
+                                    </Label>
+                                </StackLayout>
                                 <Label
                                     Grid.Column="2"
                                     HorizontalOptions="End"
