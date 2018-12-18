@@ -87,6 +87,27 @@
         {
             get { return Resource.PriceError; }
         }
+
+        public static string ImageSource
+        {
+            get { return Resource.ImageSource; }
+        }
+
+        public static string FromGallery
+        {
+            get { return Resource.FromGallery; }
+        }
+
+        public static string NewPicture
+        {
+            get { return Resource.NewPicture; }
+        }
+
+        public static string Cancel
+        {
+            get { return Resource.Cancel; }
+        }
+
     }
 
 }
